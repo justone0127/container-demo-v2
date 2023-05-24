@@ -486,7 +486,7 @@ $ podman start httpd-game-1-166
 
 <br/>
 
-### 6. OpenShift 환경 배포
+### 6. OpenShift 환경에 애플리케이션 배포
 ---
 
 **6-1) 프로젝트 생성**
