@@ -31,23 +31,23 @@ Workshop 환경은 OpenShift Cluster 환경에서 실행되는 OpenShift Virtual
 
   - 계정/비밀번호 : <span style="color: red"> userx / openshift </span>
 
-  ![console_connect](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\console_connect.png)
+  ![console_connect](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/console_connect.png)
 
 - `userx-vm` 프로젝트를 선택합니다.
 
-  ![user_project_select](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\user_project_select.png)
+  ![user_project_select](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/user_project_select.png)
 
 - 콘솔 상단의 **(>_)** 아이콘을 선택하여 Web Terminal에 접속합니다.
 
-  ![web_terminal_icon](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\web_terminal_icon.png)
+  ![web_terminal_icon](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/web_terminal_icon.png)
 
 - 아래 OpenShift command line terminal에서 `userx-vm` 프로젝트가 선택 되었는지 확인 후, Start 버튼을 누릅니다. 
 
-  ![web_terminal_start](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\web_terminal_start.png)
+  ![web_terminal_start](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/web_terminal_start.png)
 
 - 터미널을 새 창으로 열기 위해서는 새 창으로 오픈 아이콘을 선택하면 새로운 웹 브라우저에서 터미널이 실행됩니다.
 
-  ![new_terminal](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\new_terminal.png)
+  ![new_terminal](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/new_terminal.png)
 
 - SSH 서비스 확인
 
@@ -55,7 +55,7 @@ Workshop 환경은 OpenShift Cluster 환경에서 실행되는 OpenShift Virtual
   $ oc get svc
   ```
 
-  ![vm_svc](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\container-demo-main\vm_svc.png)
+  ![vm_svc](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/vm_svc.png)
 
 - VM 접속
 
@@ -63,7 +63,7 @@ Workshop 환경은 OpenShift Cluster 환경에서 실행되는 OpenShift Virtual
   $ ssh userx@$CLUSTER-IP -p 22000
   ```
 
-  ![vm_ssh_connect](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\container-demo-main\vm_ssh_connect.png)
+  ![vm_ssh_connect](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/vm_ssh_connect.png)
 
 - `sudo` 권한 스위치
 
@@ -73,7 +73,7 @@ Workshop 환경은 OpenShift Cluster 환경에서 실행되는 OpenShift Virtual
   $ sudo -i
   ```
 
-  ![13_sudo_switch](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\13_sudo_switch.png)
+  ![13_sudo_switch](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/13_sudo_switch.png)
 
 ### 2. Apache 웹 서버 (HTTPD) 설치
 
@@ -93,7 +93,7 @@ Red Hat Enterprise Linux 8 운영체제에서 패키지 관리자 도구인 dnf�
 $ dnf list --showduplicate httpd
 ```
 
-![14_httpd_install_version_check](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\14_httpd_install_version_check.png)
+![14_httpd_install_version_check](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/14_httpd_install_version_check.png)
 
 Red Hat Enterprise Linux 8 운영체제에서 패키지 관리자 도구인 dnf를 통해 httpd 서비스를 설치합니다.
 
@@ -116,11 +116,11 @@ $ systemctl start httpd
 
 페이지 호출은 OpenShift의 관리자 콘솔에서 `userx-vm` 프로젝트에서 **Networking** 선택 > **Route** 선택 > **http-8080**의 Location (주소)를 통해 확인합니다.
 
-![15_http_8080](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\15_http_8080_route.png)
+![15_http_8080](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/15_http_8080_route.png)
 
 다음과 같이 Apache HTTP Server의 기본 index.html 페이지가 확인됩니다.
 
-![16_yum_httpd_8080](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\16_yum_httpd_8080.png)
+![16_yum_httpd_8080](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/16_yum_httpd_8080.png)
 
 **2-2) httpd 컨테이너를 사용하여 기동**
 
@@ -131,7 +131,7 @@ podman pull 명령어로 다운로드를 진행합니다.
 
 - 인증 에러 출력 메시지
 
-  ![17_podman_login_authentication](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\17_podman_login_authentication.png)
+  ![17_podman_login_authentication](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/17_podman_login_authentication.png)
 
 - podman login 쉘 실행
 
@@ -139,7 +139,7 @@ podman pull 명령어로 다운로드를 진행합니다.
   $ ./07_podman_login.sh
   ```
 
-  ![18_podman_login](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\18_podman_login.png)
+  ![18_podman_login](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/18_podman_login.png)
 
 Red Hat에서 제공하는 검증된 httpd 이미지를 다운로드 받습니다. 
 podman pull 명령어로 다운로드를 진행합니다.
@@ -148,7 +148,7 @@ podman pull 명령어로 다운로드를 진행합니다.
 $ podman pull registry.redhat.io/rhel8/httpd-24:1-166
 ```
 
-![19_imags_pull](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\19_imags_pull.png)
+![19_imags_pull](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/19_imags_pull.png)
 
 다운로드 받은 이미지를 확인합니다.
 
@@ -156,7 +156,7 @@ $ podman pull registry.redhat.io/rhel8/httpd-24:1-166
 $ podman images
 ```
 
-![20_podman_images](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\20_podman_images.png)
+![20_podman_images](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/20_podman_images.png)
 
 다운로드 받은 httpd 이미지를 실행하여 웹 서버 서비스를 확인합니다.
 
@@ -164,7 +164,7 @@ $ podman images
 $ podman run -d --name httpd -p 8081:8080 registry.redhat.io/rhel8/httpd-24:1-166
 ```
 
-![21_podman_httpd_256_run](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\21_podman_httpd_166_run.png)
+![21_podman_httpd_256_run](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/21_podman_httpd_166_run.png)
 
 실행한 컨테이너의 프로세스를 확인합니다.
 
@@ -172,15 +172,15 @@ $ podman run -d --name httpd -p 8081:8080 registry.redhat.io/rhel8/httpd-24:1-16
 $ podman ps
 ```
 
-![22_podman_httpd_256_process](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\22_podman_httpd_166_process.png)
+![22_podman_httpd_256_process](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/22_podman_httpd_166_process.png)
 
 페이지 호출은 OpenShift의 관리자 콘솔에서 `userx-vm` 프로젝트에서 **Networking** 선택 > **Route** 선택 > **http-8081**의 Location (주소)를 통해 확인합니다.
 
-![23_http_8081_route](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\23_http_8081_route.png)
+![23_http_8081_route](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/23_http_8081_route.png)
 
 다음과 같이 Apache HTTP Server의 기본 index.html 페이지가 확인됩니다.
 
-![24_podman_container_httpd_8081](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\24_podman_container_httpd_8081.png)
+![24_podman_container_httpd_8081](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/24_podman_container_httpd_8081.png)
 
 **2-3) 요약 - 웹 서버 설치시 특징**
 
@@ -222,7 +222,7 @@ $ ls /var/www/html
 $ cat /etc/httpd/conf/httpd.conf | grep DocumentRoot
 ```
 
-![25_httpd_documentroot](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\25_httpd_documentroot.png)
+![25_httpd_documentroot](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/25_httpd_documentroot.png)
 
 *애플리케이션 복사*
 
@@ -232,15 +232,15 @@ $ cp -R ./clumsy-bird/ /var/www/html/
 $ ls /var/www/html/
 ```
 
-![26_application_copy](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\26_application_copy.png)
+![26_application_copy](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/26_application_copy.png)
 
 애플리케이션 복사가 완료되었으면, 웹 브라우저에서 게임 서비스를 확인합니다.
 
-![15_http_8080_route](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\15_http_8080_route.png)
+![15_http_8080_route](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/15_http_8080_route.png)
 
 다음과 같이 게임 서비스로 호출 됨을 확인합니다.
 
-![27_vm_game_app](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\27_vm_game_app.png)
+![27_vm_game_app](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/27_vm_game_app.png)
 
 
 
@@ -273,7 +273,7 @@ Containerfile 명세 파일을 활용하여 컨테이너 이미지를 생성합�
 $ podman build -t httpd-game:1-166 .
 ```
 
-![28_podman_build](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\28_podman_build.png)
+![28_podman_build](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/28_podman_build.png)
 
 새로 빌드된 이미지를 확인합니다.
 
@@ -281,7 +281,7 @@ $ podman build -t httpd-game:1-166 .
 $ podman images
 ```
 
-![29_podman_game_images](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\29_podman_game_images.png)
+![29_podman_game_images](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/29_podman_game_images.png)
 
 새롭게 만든 httpd-game 이미지를 활용하여 컨테이너를 기동합니다.
 
@@ -289,7 +289,7 @@ $ podman images
 $ podman run -d --name httpd-game-1-166 -p 8081:8080 httpd-game:1-166
 ```
 
-![30_podman_game_166_run](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\30_podman_game_166_run.png)
+![30_podman_game_166_run](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/30_podman_game_166_run.png)
 
 실행된 Container의 프로세스를 확인합니다.
 
@@ -297,15 +297,15 @@ $ podman run -d --name httpd-game-1-166 -p 8081:8080 httpd-game:1-166
 $ podman ps
 ```
 
-![31_podman_game_166_process](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\31_podman_game_166_process.png)
+![31_podman_game_166_process](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/31_podman_game_166_process.png)
 
 웹 브라우저에서 게임 서비스를 확인합니다.
 
-![23_http_8081_route](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\23_http_8081_route.png)
+![23_http_8081_route](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/23_http_8081_route.png)
 
 다음과 같이 게임 서비스로 호출 됨을 확인합니다.
 
-![32_podman_game_app](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\32_podman_game_app.png)
+![32_podman_game_app](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/32_podman_game_app.png)
 
 
 
@@ -328,7 +328,7 @@ httpd 버전을 확인합니다.
 $ dnf list --showduplicate httpd
 ```
 
-![33_rhel8_httpd_version_before](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\33_rhel8_httpd_version_before.png)
+![33_rhel8_httpd_version_before](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/33_rhel8_httpd_version_before.png)
 
 더 최신 버전인 <span style="color: green">httpd-2.4.37-56.module+el8.8.0+18758+b3a9c8da.6.x86_64</span> 으로 httpd 웹 서버를 업그레이드합니다.
 
@@ -342,11 +342,11 @@ httpd 버전이 <span style="color: red">2.4.37-56.module+el8.8.0+18758+b3a9c8da
 $ dnf list --showduplicate httpd
 ```
 
-![34_rhel8_httpd_version_after](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\34_rhel8_httpd_version_after.png)
+![34_rhel8_httpd_version_after](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/34_rhel8_httpd_version_after.png)
 
 웹 브라우저에서 http-8080 서비스의 정상 유무를 확인합니다.
 
-![15_http_8080_route](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\15_http_8080_route.png)
+![15_http_8080_route](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/15_http_8080_route.png)
 
 **4-2) httpd 컨테이너의 웹 서버 업그레이드**
 
@@ -356,7 +356,7 @@ Podman 명령어로 httpd 컨테이너 이미지의 최근 Tag를 확인합니�
 $ podman search --list-tags registry.redhat.io/rhel8/httpd-24
 ```
 
-![35_podman_search_tags](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\35_podman_search_tags.png)
+![35_podman_search_tags](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/35_podman_search_tags.png)
 
 기본 베이스가 되는 httpd 컨테이너의 버전 (<span style="color: red">1-256</span>)을 확정하고 Containerfile을 수정합니다.
 
@@ -365,7 +365,7 @@ $ podman search --list-tags registry.redhat.io/rhel8/httpd-24
 $ cat Containerfile
 ```
 
-![36_containerfile](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\36_containerfile.png)
+![36_containerfile](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/36_containerfile.png)
 
 파일 내용에 컨테이너 버전을 수정합니다.
 
@@ -379,7 +379,7 @@ $ sed -i 's/1-166/1-256/g' ./Containerfile
 $ cat Containerfile
 ```
 
-![37_podman_tag_update](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\37_podman_tag_update.png)
+![37_podman_tag_update](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/37_podman_tag_update.png)
 
 Containerfile 명세 파일을 활용하여 컨테이너 이미지를 생성합니다.
 
@@ -387,7 +387,7 @@ Containerfile 명세 파일을 활용하여 컨테이너 이미지를 생성합�
 $ podman build -t httpd-game:1-256 .
 ```
 
-![38_podman_image_build_256](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\38_podman_image_build_256.png)
+![38_podman_image_build_256](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/38_podman_image_build_256.png)
 
 새로 <span style="color: red">1-256</span>버전으로 빌드된 컨테이너 이미지를 확인합니다.
 
@@ -395,7 +395,7 @@ $ podman build -t httpd-game:1-256 .
 $ podman images
 ```
 
-![39_podman_game_image_256](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\39_podman_game_image_256.png)
+![39_podman_game_image_256](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/39_podman_game_image_256.png)
 
 기존 실행 중인 httpd-game-1-166 컨테이너는 중지합니다.
 
@@ -404,7 +404,7 @@ $ podman images
 $ podman stop httpd-game-1-166
 ```
 
-![40_podman_166_stop](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\40_podman_166_stop.png)
+![40_podman_166_stop](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/40_podman_166_stop.png)
 
 httpd-game-1-166 컨테이너가 중지됐는지 확인합니다.
 
@@ -412,7 +412,7 @@ httpd-game-1-166 컨테이너가 중지됐는지 확인합니다.
 $ podman ps
 ```
 
-![41_podman_166_stop_ps](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\41_podman_166_stop_ps.png)
+![41_podman_166_stop_ps](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/41_podman_166_stop_ps.png)
 
  새로운 버전의 httpd-game:1-256 이미지를 활용하여 컨테이너를 기동합니다.
 
@@ -420,15 +420,15 @@ $ podman ps
 $ podman run -d --name httpd-game-1-256 -p 8081:8080 httpd-game:1-256
 ```
 
-![42_podman_256_start](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\42_podman_256_start.png)
+![42_podman_256_start](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/42_podman_256_start.png)
 
 httpd-game-1-256 컨테이너가 실행중인 프로세스를 확인합니다.
 
-![43_podman_256_process](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\43_podman_256_process.png)
+![43_podman_256_process](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/43_podman_256_process.png)
 
 웹 브라우저에서 http-8081 서비스의 정상 유무를 확인합니다.
 
-![23_http_8081_route](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\23_http_8081_route.png)
+![23_http_8081_route](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/23_http_8081_route.png)
 
 **4-3) 요약 - 웹 서버 업그레이드**
 
@@ -452,7 +452,7 @@ $ dnf downgrade -y httpd-2.4.37-47.module+el8.6.0+14529+083145da.1.x86_64
 ```bash
 $ dnf list --showduplicate httpd
 ```
-![44_rhel8_httpd_version_rollback](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\44_rhel8_httpd_version_rollback.png)
+![44_rhel8_httpd_version_rollback](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/44_rhel8_httpd_version_rollback.png)
 
 **5-2) httpd 컨테이너의 웹 서버 버전 롤백**
 
@@ -462,7 +462,7 @@ $ dnf list --showduplicate httpd
 $ podman ps
 ```
 
-![45_podman_256_process_01](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\45_podman_256_process_01.png)
+![45_podman_256_process_01](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/45_podman_256_process_01.png)
 
 신규 버전의 httpd-game-1-256 컨테이이너를 중지합니다.
 
@@ -470,7 +470,7 @@ $ podman ps
 $ podman stop httpd-game-1-256
 ```
 
-![46_podman_256_stop_02](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\46_podman_256_stop_02.png)
+![46_podman_256_stop_02](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/46_podman_256_stop_02.png)
 
 이전 버전의 httpd-1-166 컨테이너를 실행합니다.
 
@@ -478,11 +478,11 @@ $ podman stop httpd-game-1-256
 $ podman start httpd-game-1-166
 ```
 
-![47_podman_166_start_03](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\47_podman_166_start_03.png)
+![47_podman_166_start_03](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/47_podman_166_start_03.png)
 
 이전 버전의 httpd-1-166 컨테이너가 실행됐음을 확인합니다.
 
-![48_podman_166_process_04](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\48_podman_166_process_04.png)
+![48_podman_166_process_04](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/48_podman_166_process_04.png)
 
 <br/>
 
@@ -495,54 +495,54 @@ $ podman start httpd-game-1-166
 
 - 애플리케이션을 배포하기 위해 프로젝트를 생성합니다.
 
-  ![01_creating_project](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\01_creating_project.png)
+  ![01_creating_project](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/01_creating_project.png)
 
 - `프로젝트 이름` : userx-demo 입력 (자신의 계정-demo)
 
-  ![02_user1_demo_project](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\02_user1_demo_project.png)
+  ![02_user1_demo_project](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/02_user1_demo_project.png)
 
 - 애플리케이션 배포
 
   아래 화면에서 `Add page`를 선택하여 애플리케이션 배포를 계속 진행합니다.
 
-  ![03_application_deployment_add_page](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\03_application_deployment_add_page.png)
+  ![03_application_deployment_add_page](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/03_application_deployment_add_page.png)
 
 - VM 및 컨테이너 환경 실습과 동일하게 Apache httpd 기반으로 애플리케이션을 실행하기 위해서는 Developer Catalog 화면에서 All Services를 선택합니다.
 
-  ![04_developer_catalog](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\04_developer_catalog.png)
+  ![04_developer_catalog](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/04_developer_catalog.png)
 
 - 검색창에 `httpd`를 검색한 후, **Builder Images**의 **Apache HTTP Server (httpd)**를 선택합니다.
 
-  ![05_builder_images](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\05_builder_images.png)
+  ![05_builder_images](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/05_builder_images.png)
 
   
 
 - **Create** 버튼을 눌러서 진행을 계속합니다.
 
-  ![06_create_application](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\06_create_application.png)
+  ![06_create_application](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/06_create_application.png)
 
 - Git Repo URL은 아래 기입된 정보를 입력하여 계속 진행합니다. 다른 정보는 기본으로 두고 진행을 계속합니다.
 
   - Git Repo URL : https://github.com/ellisonleao/clumsy-bird/
 
-  ![07_create_s2i_image_application](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\07_create_s2i_image_application.png)
+  ![07_create_s2i_image_application](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/07_create_s2i_image_application.png)
 
 - Topolozy에서 실행중인 Pod(Container)를 선택하면 상세 정보를 확인할 수 있습니다.
 
-  ![08_pod_toplozy](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\08_pod_toplozy.png)
+  ![08_pod_toplozy](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/08_pod_toplozy.png)
 
 - 오른쪽 상세 정보에서 **Builds** 부분의 **View logs**를 선택합니다.
 
-  ![09_builds_view_logs](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\09_builds_view_logs.png)
+  ![09_builds_view_logs](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/09_builds_view_logs.png)
 
 - **View logs**를 선택하면 상세로그를 확인 할 수 있습니다.
 
-  ![10_view_logs](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\10_view_logs.png)
+  ![10_view_logs](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/10_view_logs.png)
 
 - **Open URL** 버튼을 선택하여 애플리케이션이 정상적으로 호출되는지 확인합니다.
 
-  ![11_open_url](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\11_open_url.png)
+  ![11_open_url](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/11_open_url.png)
 
 - VM과 Container 환경에서 실행했던 동일한 애플리케이션이 OpenShift 환경에서도 동일하게 서비스 됨을 확인하였습니다.
 
-  ![12_application_service](C:\Works\01_자료\01_OCP\2023_KDN_Account_Day\openshift_images\12_application_service.png)
+  ![12_application_service](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/12_application_service.png)
