@@ -52,7 +52,7 @@ Workshop 환경은 OpenShift Cluster 환경에서 실행되는 OpenShift Virtual
 - SSH 서비스 확인
 
   ```bash
-  $ oc get svc
+  oc get svc
   ```
 
   ![vm_svc](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/vm_svc.png)
@@ -60,7 +60,7 @@ Workshop 환경은 OpenShift Cluster 환경에서 실행되는 OpenShift Virtual
 - VM 접속
 
   ```bash
-  $ ssh userx@$CLUSTER-IP -p 22000
+  ssh userx@$CLUSTER-IP -p 22000
   ```
 
   ![vm_ssh_connect](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/vm_ssh_connect.png)
@@ -70,7 +70,7 @@ Workshop 환경은 OpenShift Cluster 환경에서 실행되는 OpenShift Virtual
   패키지 설치 및 Labs을 실행을 위해 현재 계정에서 `sudo` 권한으로 스위치합니다.
 
   ```bash
-  $ sudo -i
+  sudo -i
   ```
 
   ![13_sudo_switch](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/13_sudo_switch.png)
@@ -90,7 +90,7 @@ Apache 웹 서버를 RHEL OS와 컨테이너에 각각 구성해보면서 각각
 Red Hat Enterprise Linux 8 운영체제에서 패키지 관리자 도구인 dnf를 통해 설치 가능한 httpd 버전을 확인합니다.
 
 ```bash
-$ dnf list --showduplicate httpd
+dnf list --showduplicate httpd
 ```
 
 ![14_httpd_install_version_check](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/14_httpd_install_version_check.png)
@@ -98,20 +98,20 @@ $ dnf list --showduplicate httpd
 Red Hat Enterprise Linux 8 운영체제에서 패키지 관리자 도구인 dnf를 통해 httpd 서비스를 설치합니다.
 
 ```bash
-$ dnf install -y httpd-2.4.37-47.module+el8.6.0+14529+083145da.1.x86_64
+dnf install -y httpd-2.4.37-47.module+el8.6.0+14529+083145da.1.x86_64
 ```
 
 Apache 웹 서버인 httpd 데몬의 서비스 포트를 8080으로 변경합니다.
 
 ```bash
-$ sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
+sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 ```
 
 Apache 웹 서버인 httpd 서비스를 활성화하고 기동합니다. 
 
 ```bash
-$ systemctl enable httpd
-$ systemctl start httpd
+systemctl enable httpd
+systemctl start httpd
 ```
 
 페이지 호출은 OpenShift의 관리자 콘솔에서 `userx-vm` 프로젝트에서 **Networking** 선택 > **Route** 선택 > **http-8080**의 Location (주소)를 통해 확인합니다.
@@ -136,7 +136,7 @@ podman pull 명령어로 다운로드를 진행합니다.
 - podman login 쉘 실행
 
   ```bash
-  $ ./07_podman_login.sh
+  ./07_podman_login.sh
   ```
 
   ![18_podman_login](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/18_podman_login.png)
@@ -145,7 +145,7 @@ Red Hat에서 제공하는 검증된 httpd 이미지를 다운로드 받습니�
 podman pull 명령어로 다운로드를 진행합니다.
 
 ```bash
-$ podman pull registry.redhat.io/rhel8/httpd-24:1-166
+podman pull registry.redhat.io/rhel8/httpd-24:1-166
 ```
 
 ![19_imags_pull](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/19_imags_pull.png)
@@ -153,7 +153,7 @@ $ podman pull registry.redhat.io/rhel8/httpd-24:1-166
 다운로드 받은 이미지를 확인합니다.
 
 ```bash
-$ podman images
+podman images
 ```
 
 ![20_podman_images](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/20_podman_images.png)
@@ -161,7 +161,7 @@ $ podman images
 다운로드 받은 httpd 이미지를 실행하여 웹 서버 서비스를 확인합니다.
 
 ```bash
-$ podman run -d --name httpd -p 8081:8080 registry.redhat.io/rhel8/httpd-24:1-166
+podman run -d --name httpd -p 8081:8080 registry.redhat.io/rhel8/httpd-24:1-166
 ```
 
 ![21_podman_httpd_256_run](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/21_podman_httpd_166_run.png)
@@ -169,7 +169,7 @@ $ podman run -d --name httpd -p 8081:8080 registry.redhat.io/rhel8/httpd-24:1-16
 실행한 컨테이너의 프로세스를 확인합니다.
 
 ```bash
-$ podman ps
+podman ps
 ```
 
 ![22_podman_httpd_256_process](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/22_podman_httpd_166_process.png)
@@ -195,8 +195,8 @@ $ podman ps
 Git 소스에 있는 개발 소스를 로컬에 다운로드 합니다.
 
 ```bash
-$ git clone https://github.com/ellisonleao/clumsy-bird/
-$ ls ./clumsy-bird/
+git clone https://github.com/ellisonleao/clumsy-bird/
+ls ./clumsy-bird/
 ```
 
 **3-1) 가상머신 기반 리눅스의 httpd 웹 서버에 APP 배포**
@@ -205,21 +205,21 @@ $ ls ./clumsy-bird/
 
 ```bash
 # 애플리케이션 소스 위치 확인
-$ cat /etc/httpd/conf/httpd.conf | grep DocumentRoot
+cat /etc/httpd/conf/httpd.conf | grep DocumentRoot
 
 # 기존 소스 백업
-$ tar cvf app_old.tar /var/www/html
+tar cvf app_old.tar /var/www/html
 
 # 애플리케이션 소스 복사 
-$ ls ./clumsy-bird/
-$ cp -R ./clumsy-bird/* /var/www/html/
-$ ls /var/www/html
+ls ./clumsy-bird/
+cp -R ./clumsy-bird/* /var/www/html/
+ls /var/www/html
 ```
 
 *Apache 웹 서버의 DocumentRoot 설정 확인*
 
 ```bash
-$ cat /etc/httpd/conf/httpd.conf | grep DocumentRoot
+cat /etc/httpd/conf/httpd.conf | grep DocumentRoot
 ```
 
 ![25_httpd_documentroot](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/25_httpd_documentroot.png)
@@ -227,9 +227,9 @@ $ cat /etc/httpd/conf/httpd.conf | grep DocumentRoot
 *애플리케이션 복사*
 
 ```bash
-$ ls ./clumsy-bird/
-$ cp -R ./clumsy-bird/ /var/www/html/
-$ ls /var/www/html/
+ls ./clumsy-bird/
+cp -R ./clumsy-bird/ /var/www/html/
+ls /var/www/html/
 ```
 
 ![26_application_copy](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/26_application_copy.png)
@@ -249,13 +249,13 @@ $ ls /var/www/html/
 기존에 서비스하던 httpd 컨테이너를 중지합니다. 
 
 ```bash
-$ podman stop httpd
+podman stop httpd
 ```
 
 registry.redhat.io/rhel8/httpd-24:1-256 컨테이너에 개발 소스를 배포하는 Containerfile을 생성합니다.
 
 ```bash
-$ cat <<EOF > Containerfile
+cat <<EOF > Containerfile
 FROM registry.redhat.io/rhel8/httpd-24:1-166
 
 # Add application sources
@@ -270,7 +270,7 @@ EOF
 Containerfile 명세 파일을 활용하여 컨테이너 이미지를 생성합니다.
 
 ```bash
-$ podman build -t httpd-game:1-166 .
+podman build -t httpd-game:1-166 .
 ```
 
 ![28_podman_build](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/28_podman_build.png)
@@ -278,7 +278,7 @@ $ podman build -t httpd-game:1-166 .
 새로 빌드된 이미지를 확인합니다.
 
 ```bash
-$ podman images
+podman images
 ```
 
 ![29_podman_game_images](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/29_podman_game_images.png)
@@ -286,7 +286,7 @@ $ podman images
 새롭게 만든 httpd-game 이미지를 활용하여 컨테이너를 기동합니다.
 
 ```bash
-$ podman run -d --name httpd-game-1-166 -p 8081:8080 httpd-game:1-166
+podman run -d --name httpd-game-1-166 -p 8081:8080 httpd-game:1-166
 ```
 
 ![30_podman_game_166_run](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/30_podman_game_166_run.png)
@@ -294,7 +294,7 @@ $ podman run -d --name httpd-game-1-166 -p 8081:8080 httpd-game:1-166
 실행된 Container의 프로세스를 확인합니다.
 
 ```bash
-$ podman ps
+podman ps
 ```
 
 ![31_podman_game_166_process](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/31_podman_game_166_process.png)
@@ -325,7 +325,7 @@ httpd 버전을 확인합니다.
 현재 버전은 <span style="color: green">httpd-2.4.37-47.module+el8.6.0+14529+083145da.1</span> 입니다.
 
 ```bash
-$ dnf list --showduplicate httpd
+dnf list --showduplicate httpd
 ```
 
 ![33_rhel8_httpd_version_before](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/33_rhel8_httpd_version_before.png)
@@ -333,13 +333,13 @@ $ dnf list --showduplicate httpd
 더 최신 버전인 <span style="color: green">httpd-2.4.37-56.module+el8.8.0+18758+b3a9c8da.6.x86_64</span> 으로 httpd 웹 서버를 업그레이드합니다.
 
 ```bash
-$ dnf update -y httpd-2.4.37-56.module+el8.8.0+18758+b3a9c8da.6.x86_64
+dnf update -y httpd-2.4.37-56.module+el8.8.0+18758+b3a9c8da.6.x86_64
 ```
 
 httpd 버전이 <span style="color: red">2.4.37-56.module+el8.8.0+18758+b3a9c8da.6</span> 으로 업그레이드된 것을 확인합니다.
 
 ```bash
-$ dnf list --showduplicate httpd
+dnf list --showduplicate httpd
 ```
 
 ![34_rhel8_httpd_version_after](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/34_rhel8_httpd_version_after.png)
@@ -353,7 +353,7 @@ $ dnf list --showduplicate httpd
 Podman 명령어로 httpd 컨테이너 이미지의 최근 Tag를 확인합니다.
 
 ```bash
-$ podman search --list-tags registry.redhat.io/rhel8/httpd-24
+podman search --list-tags registry.redhat.io/rhel8/httpd-24
 ```
 
 ![35_podman_search_tags](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/35_podman_search_tags.png)
@@ -362,7 +362,7 @@ $ podman search --list-tags registry.redhat.io/rhel8/httpd-24
 
 
 ```bash
-$ cat Containerfile
+cat Containerfile
 ```
 
 ![36_containerfile](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/36_containerfile.png)
@@ -370,13 +370,13 @@ $ cat Containerfile
 파일 내용에 컨테이너 버전을 수정합니다.
 
 ```bash
-$ sed -i 's/1-166/1-256/g' ./Containerfile
+sed -i 's/1-166/1-256/g' ./Containerfile
 ```
 
 파일에서 버전이 제대로 수정이 되었는지 확인합니다.
 
 ```bash
-$ cat Containerfile
+cat Containerfile
 ```
 
 ![37_podman_tag_update](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/37_podman_tag_update.png)
@@ -384,7 +384,7 @@ $ cat Containerfile
 Containerfile 명세 파일을 활용하여 컨테이너 이미지를 생성합니다.
 
 ```bash
-$ podman build -t httpd-game:1-256 .
+podman build -t httpd-game:1-256 .
 ```
 
 ![38_podman_image_build_256](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/38_podman_image_build_256.png)
@@ -392,7 +392,7 @@ $ podman build -t httpd-game:1-256 .
 새로 <span style="color: red">1-256</span>버전으로 빌드된 컨테이너 이미지를 확인합니다.
 
 ```bash
-$ podman images
+podman images
 ```
 
 ![39_podman_game_image_256](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/39_podman_game_image_256.png)
@@ -401,7 +401,7 @@ $ podman images
 
 
 ```bash
-$ podman stop httpd-game-1-166
+podman stop httpd-game-1-166
 ```
 
 ![40_podman_166_stop](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/40_podman_166_stop.png)
@@ -409,7 +409,7 @@ $ podman stop httpd-game-1-166
 httpd-game-1-166 컨테이너가 중지됐는지 확인합니다.
 
 ```bash
-$ podman ps
+podman ps
 ```
 
 ![41_podman_166_stop_ps](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/41_podman_166_stop_ps.png)
@@ -417,7 +417,7 @@ $ podman ps
  새로운 버전의 httpd-game:1-256 이미지를 활용하여 컨테이너를 기동합니다.
 
 ```bash
-$ podman run -d --name httpd-game-1-256 -p 8081:8080 httpd-game:1-256
+podman run -d --name httpd-game-1-256 -p 8081:8080 httpd-game:1-256
 ```
 
 ![42_podman_256_start](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/42_podman_256_start.png)
@@ -444,13 +444,13 @@ httpd-game-1-256 컨테이너가 실행중인 프로세스를 확인합니다.
 기존의 httpd 웹 서버 버전인 <span style="color: green">2.4.37-47.module+el8.6.0+14529+083145da.1</span> 로 다시 롤백합니다.
 
 ```bash
-$ dnf list --showduplicate httpd
-$ dnf downgrade -y httpd-2.4.37-47.module+el8.6.0+14529+083145da.1.x86_64
+dnf list --showduplicate httpd
+dnf downgrade -y httpd-2.4.37-47.module+el8.6.0+14529+083145da.1.x86_64
 ```
 버전이 롤백된 것을 확인합니다.
 
 ```bash
-$ dnf list --showduplicate httpd
+dnf list --showduplicate httpd
 ```
 ![44_rhel8_httpd_version_rollback](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/44_rhel8_httpd_version_rollback.png)
 
@@ -459,7 +459,7 @@ $ dnf list --showduplicate httpd
 신규 버전의 httpd-game-1-256 프로세스를 확인합니다.
 
 ```bash
-$ podman ps
+podman ps
 ```
 
 ![45_podman_256_process_01](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/45_podman_256_process_01.png)
@@ -467,7 +467,7 @@ $ podman ps
 신규 버전의 httpd-game-1-256 컨테이이너를 중지합니다.
 
 ```bash
-$ podman stop httpd-game-1-256
+podman stop httpd-game-1-256
 ```
 
 ![46_podman_256_stop_02](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/46_podman_256_stop_02.png)
@@ -475,7 +475,7 @@ $ podman stop httpd-game-1-256
 이전 버전의 httpd-1-166 컨테이너를 실행합니다.
 
 ```bash
-$ podman start httpd-game-1-166
+podman start httpd-game-1-166
 ```
 
 ![47_podman_166_start_03](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/47_podman_166_start_03.png)
