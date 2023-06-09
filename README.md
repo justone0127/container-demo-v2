@@ -9,7 +9,6 @@
 3. 어플리케이션 배포 
 4. 웹서버 버전 업그레이드 
 5. 웹서버 버전 롤백 
-6. OpenShift 환경에 애플리케이션 배포
 ```
 
 <br/>
@@ -485,64 +484,3 @@ podman start httpd-game-1-166
 ![48_podman_166_process_04](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/48_podman_166_process_04.png)
 
 <br/>
-
-### 6. OpenShift 환경에 애플리케이션 배포
----
-
-**6-1) 프로젝트 생성**
-
-- `프로젝트(네임스페이스)` : 쿠버네티스에서 용도에 따라서 오브젝트를 묶는 하나의 가상 공간 또는 그룹, 쉽게 말하면 애플리케이션의 도메인 단위
-
-- 애플리케이션을 배포하기 위해 프로젝트를 생성합니다.
-
-  ![01_creating_project](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/01_creating_project.png)
-
-- `프로젝트 이름` : userx-demo 입력 (자신의 계정-demo)
-
-  ![02_user1_demo_project](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/02_user1_demo_project.png)
-
-- 애플리케이션 배포
-
-  아래 화면에서 `Add page`를 선택하여 애플리케이션 배포를 계속 진행합니다.
-
-  ![03_application_deployment_add_page](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/03_application_deployment_add_page.png)
-
-- VM 및 컨테이너 환경 실습과 동일하게 Apache httpd 기반으로 애플리케이션을 실행하기 위해서는 Developer Catalog 화면에서 All Services를 선택합니다.
-
-  ![04_developer_catalog](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/04_developer_catalog.png)
-
-- 검색창에 `httpd`를 검색한 후, **Builder Images**의 **Apache HTTP Server (httpd)**를 선택합니다.
-
-  ![05_builder_images](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/05_builder_images.png)
-
-  
-
-- **Create** 버튼을 눌러서 진행을 계속합니다.
-
-  ![06_create_application](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/06_create_application.png)
-
-- Git Repo URL은 아래 기입된 정보를 입력하여 계속 진행합니다. 다른 정보는 기본으로 두고 진행을 계속합니다.
-
-  - Git Repo URL : https://github.com/ellisonleao/clumsy-bird/
-
-  ![07_create_s2i_image_application](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/07_create_s2i_image_application.png)
-
-- Topolozy에서 실행중인 Pod(Container)를 선택하면 상세 정보를 확인할 수 있습니다.
-
-  ![08_pod_toplozy](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/08_pod_toplozy.png)
-
-- 오른쪽 상세 정보에서 **Builds** 부분의 **View logs**를 선택합니다.
-
-  ![09_builds_view_logs](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/09_builds_view_logs.png)
-
-- **View logs**를 선택하면 상세로그를 확인 할 수 있습니다.
-
-  ![10_view_logs](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/10_view_logs.png)
-
-- **Open URL** 버튼을 선택하여 애플리케이션이 정상적으로 호출되는지 확인합니다.
-
-  ![11_open_url](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/11_open_url.png)
-
-- VM과 Container 환경에서 실행했던 동일한 애플리케이션이 OpenShift 환경에서도 동일하게 서비스 됨을 확인하였습니다.
-
-  ![12_application_service](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/12_application_service.png)
