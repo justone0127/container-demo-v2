@@ -132,13 +132,7 @@ podman pull 명령어로 다운로드를 진행합니다.
 
   ![17_podman_login_authentication](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/17_podman_login_authentication.png)
 
-- podman login 쉘 실행
-
-  ```bash
-  ./07_podman_login.sh
-  ```
-
-  ![18_podman_login](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/18_podman_login.png)
+- podman login 시 위와 같이 인증 에러가 출력되면 손을 들어주세요~!!
 
 Red Hat에서 제공하는 검증된 httpd 이미지를 다운로드 받습니다. 
 podman pull 명령어로 다운로드를 진행합니다.
