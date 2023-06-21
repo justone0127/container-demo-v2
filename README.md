@@ -126,13 +126,11 @@ systemctl start httpd
 Red Hat에서 제공하는 검증된 httpd 이미지를 다운로드 받습니다. 
 podman pull 명령어로 다운로드를 진행합니다.
 
-만약, 다음과 같이 인증 에러가 발생하는 경우에는 홈 디렉토리 위치에 있는 `07_podman_login.sh` 쉘 스크립트를 수행한 후 이미지 다운로드를 진행합니다.
+만약, 다음과 같이 인증 에러가 발생하는 경우에는 손을 들어주세요~!!
 
 - 인증 에러 출력 메시지
 
   ![17_podman_login_authentication](https://github.com/justone0127/container-demo-v2/blob/main/openshift_images/17_podman_login_authentication.png)
-
-- podman login 시 위와 같이 인증 에러가 출력되면 손을 들어주세요~!!
 
 Red Hat에서 제공하는 검증된 httpd 이미지를 다운로드 받습니다. 
 podman pull 명령어로 다운로드를 진행합니다.
